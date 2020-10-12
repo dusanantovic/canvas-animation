@@ -12,9 +12,10 @@ class CanvasText {
     yPx = 0;
     color = "";
     fontSize = 0;
-    maxWidth = 0;
+    height = 50;
+    width = 352;
 
-    constructor(text, x, y, xPx, yPx, color, fontSize, maxWidth) {
+    constructor(text, x, y, xPx, yPx, color, fontSize) {
         this.text = text;
         this.x = x;
         this.y = y;
@@ -22,7 +23,6 @@ class CanvasText {
         this.yPx = yPx;
         this.color = color;
         this.fontSize = fontSize;
-        this.maxWidth = maxWidth;
     }
 
     create() {
@@ -33,10 +33,10 @@ class CanvasText {
     }
 
     update() {
-        if ((this.x - (this.maxWidth / 2)) < 0 || (this.x + (this.maxWidth / 2)) > innerWidth) {
+        if ((this.x - (this.width / 2)) < 0 || (this.x + (this.width / 2)) > innerWidth) {
             this.xPx = -this.xPx;
         }
-        if ((this.y - this.fontSize) < 0 || this.y > innerHeight) {
+        if ((this.y - this.height) < 0 || this.y > innerHeight) {
             this.yPx = -this.yPx;
         }
         this.x += this.xPx;
@@ -116,7 +116,7 @@ function init() {
     const textY = getRandomNumber(innerHeight);
     const textXpx = getRandomNumber(6);
     const textYpx = getRandomNumber(6);
-    text = new CanvasText("Hello World", textX, textY, textXpx, textYpx, getRandomColor(), 64, 200);
+    text = new CanvasText("Hello World", textX, textY, textXpx, textYpx, getRandomColor(), 64);
     circles = [];
     for(let i = 0; i < 150; i++) {
         const circleX = getRandomNumber(innerWidth);
